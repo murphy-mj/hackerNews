@@ -17,13 +17,15 @@ const post = {
     upvotes: 10
 };
 
-storiesOf("Hacker App/News Form", module).add("default", () => <NewsForm />);
-
+storiesOf("Hacker App/News Form", module)
+    .add("default", () => {
+    return <NewsForm post ={post} handleAdd=  {action("news item added")} />
+})
 
 storiesOf('Hacker App/News Item', module)
-    .add('default', () => <NewsItem post= { post } upvoteHandler{action("upvoted")} />
+    .add('default', () => <NewsItem post= { post } upvoteHandler= {action("upvoted")} />
     )
-    .add('No hyperlink', () => <NewsItem post= { { ...post, link: ''} }  upvoteHandler{action("upvoted")}/>
+    .add('No hyperlink', () => <NewsItem post= { { post, link: ''} }  upvoteHandler= {action("upvoted")}/>
     )
 
 
