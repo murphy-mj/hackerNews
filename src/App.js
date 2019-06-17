@@ -8,6 +8,12 @@ import _ from 'lodash';
 
 export default class App extends Component {
 
+
+  addNewsItem = (title, author, link) => {
+    api.add(title, author, link);
+    this.setState({});
+  };
+
   incrementUpvote = (id) => {
     api.upvote(id) ;
     this.setState({});
@@ -26,12 +32,12 @@ export default class App extends Component {
             </div>
             <div className="row">
               <div className="col-md-4 ">
-                <Form />
+                <Form handleAdd={this.addNewsItem} />
               </div>
               <div className="col-md-8">
                 <NewsList posts={posts} upvoteHandler={this.incrementUpvote} />
               </div>
-            </div>
+             </div>
           </div>
         </div>
     );
