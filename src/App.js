@@ -3,10 +3,19 @@ import React, { Component } from 'react';
 import NewsList from './components/newsList/';
 import Form from './components/newsForm/';
 import api from './storeData/stubAPI';
+import _ from 'lodash';
+
 
 export default class App extends Component {
+
+  incrementUpvote = (id) => {
+    api.upvote(id) ;
+    this.setState({});
+  };
+
   render() {
-    let posts =  api.getAll();
+    //let posts =  api.getAll();
+    let posts = _.sortBy(api.getAll(),post => -post.upvotes);
     return (
         <div className="jumbotron">
           <div className="container-fluid">
@@ -20,7 +29,7 @@ export default class App extends Component {
                 <Form />
               </div>
               <div className="col-md-8">
-                <NewsList posts={posts} />
+                <NewsList posts={posts} upvoteHandler={this.incrementUpvote} />
               </div>
             </div>
           </div>
