@@ -6,8 +6,7 @@ import App from "./App";
 import CommentPage from "./components/commentPage";
 import Header from "./components/header/";
 import LoginForm from "./components/authentication/loginForm";
-
-
+import PrivateRoute from "./components/authentication/privateRoute";
 
 
 const Router = () =>
@@ -16,7 +15,7 @@ const Router = () =>
             <Header />
             <div className="container-fluid">
                 <Switch>
-                    <Route path="/posts/:post_id" component={CommentPage} />
+                    <PrivateRoute path="/posts/:post_id" component={CommentPage} />
                     <Route path="/login" component={LoginForm} />
                     <Route exact path="/" component={App} />
                     <Redirect from="*" to="/" />
