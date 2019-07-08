@@ -27,7 +27,6 @@ export default class NewsItem extends Component {
                     <span>
 
                         <Link to={`/posts/${this.props.post.id}` }>Comments</Link>
-                       // <a href="/">Comments</a>
                     </span>
                 </span>
                 <p className="author">{this.props.post.author}</p>
